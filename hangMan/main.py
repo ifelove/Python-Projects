@@ -34,6 +34,10 @@ def hangMan():
         else:
             print("You have enter a wrong letter")
 
+    if lives == 0:
+        print("You died")
+    print(f'You guess the word', word, '!!!')
+
 
 
 
