@@ -10,14 +10,33 @@ def next_turn(row,column):
 
         if check_winner() is False:
              player=player[1]
+             label.config(text=(player[1]+"turn"))
 
+        elif check_winner() is True:
+            label.config(text=(player[0]+"win"))
+        elif check_winner() == "Tie":
+            label.config(text=("It is a Tie"))
 
+    else:
+        buttons[row][column]['text'] = player
 
+        if check_winner() is False:
+            player = player[0]
+            label.config(text=(player[0] + "turn"))
 
+        elif check_winner() is True:
+            label.config(text=(player[1] + "win"))
+        elif check_winner() == "Tie":
+            label.config(text=("It is a Tie"))
 
 
 def check_winner():
-    pass
+    for row in range(3):
+        if buttons[row][column]['text']== buttons[row][1]['text']== buttons[row][2]['text'] != "" :
+            return True
+        
+
+
 
 def new_game():
     pass

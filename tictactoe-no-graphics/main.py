@@ -2,7 +2,7 @@ import math
 import random
 
 class Player:
-    def _init_(self,letter):
+    def __init__(self,letter):
         # letter is 'x or 'o'
         self.letter=letter
 
@@ -11,17 +11,29 @@ class Player:
 
 
 class RandomComputerPlayer(Player):
-    def _ini_(self,letter):
-        super()._init_(letter)
+    def __init__(self,letter):
+        super().__init__(letter)
 
     def getMove(self,game):
-        pass
+        square=random.choice(game.availabeMove())
+        return square
 
 class HumanPlayer(Player):
-    def _ini_(self,letter):
-        super()._init_(letter)
+    def __init__(self, letter):
+        super().__init__(letter)
 
-    def getMove(self,game):
-        pass
+    def getMove(self, game):
+        valid_square=False
+        val = None
+        while not valid_square:
+            square = input(self.letter+ '\'s turn .Input move (0-9):')
+            try:
+                val = int(square)
+                if val not in game.availabeMove():
+                    raise ValueError
+                valid_square = True
+            except ValueError:
+                print("Invalid square....Try again!!!!!")
 
+        return val
 
